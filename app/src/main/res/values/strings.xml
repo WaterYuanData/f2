@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">App16</string>
+    <!--music-->
+    <string name="stop">暂停</string>
+    <string name="replay">重播</string>
+    <string name="playError">播放错误</string>
+    <string name="fileError">文件有误</string>
+    <string name="play">播放</string>
+    <string name="hello">hello</string>
+    <string name="main_backup_label">备份与恢复</string>
+    <string name="recvoer_label">恢复</string>
+    <string name="backup_label">备份</string>
+    <string name="restore_data">恢复数据</string>
+    <string name="restore_app">恢复应用</string>
+    <string name="recovery_btn">恢复按钮</string>
+    <!--12365-->
+    <string name="userName">用户名:</string>
+    <string name="password">密码:</string>
+    <string name="reset">重置</string>
+    <string name="login">登录</string>
+    <string name="randomCode">验证码:</string>
+    <!--测String.format()-->
+    <string name="connecting">连接中</string>
+
+    <!--二维码-->
+    <string name="scan_tips">\"将二维码图片对准扫描框即可自动扫描\"</string>
+
+    <!--对话框-->
+    <string name="cancel">CANCEL</string>
+    <string name="ok">OK</string>
+
+</resources>

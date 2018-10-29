@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--总结一下也就是说，在触摸模式下android:clickable="true"是
+    （android:focusable="true"，android:focusableInTouchMode="true"）能获得焦点的必要条件，
+    就是说一个控件想要在触摸模式下获得焦点就一定要可点击，上面三个属性都要有。-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dip"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <TextView
+        android:layout_width="100dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:singleLine="true"
+
+        android:text="走马灯效果的演示"></TextView>
+    android:maxLines="1"替代废弃的方法,但是未生效
+</LinearLayout>
+
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:hc="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".myView.SpiralActivity">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="螺旋线 spiral"/>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="螺旋线 spiral2"
+        app:layout_constraintTop_toBottomOf="@+id/v"/>
+
+    <RelativeLayout
+        android:id="@+id/v"
+        android:layout_width="1000px"
+        android:layout_height="1500px"
+        android:layout_marginBottom="90px"
+        android:layout_marginLeft="100px"
+        android:layout_marginRight="110px"
+        android:layout_marginTop="80px"
+        android:background="#5f00"
+        android:paddingLeft="25px"
+        android:paddingTop="15px"
+        app:layout_constraintTop_toBottomOf="@id/tv1">
+
+        <!--在布局文件用上我们的自定义的属性-->
+        <!--在根标签里面设定命名空间，命名空间名称可以随便取，比如hc，-->
+        <!--命名空间后面取得值是固定的："http://schemas.android.com/apk/res-auto"-->
+        <com.example.yuan.app16.myView.FibonacciView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#5ff0"
+            android:layout_marginRight="20px"
+            android:layout_marginBottom="10px"
+            hc:default_size="22px"/>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

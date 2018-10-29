@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<style name="FruitActivityTheme" parent="AppTheme"></style>-->
+    <style name="FruitActivityTheme" parent="MyTheme">
+        <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
+        <item name="android:statusBarColor">#00000000</item>
+        <!--statusBarColor从API21才有,所以values-v21-->
+    </style>
+</resources>
