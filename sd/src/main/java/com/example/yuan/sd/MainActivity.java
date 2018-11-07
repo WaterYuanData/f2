@@ -63,14 +63,17 @@ public class MainActivity extends AppCompatActivity {
                 String string = volume.toString();
                 Method getPath = volume.getClass().getMethod("getPath");
                 String path = (String) getPath.invoke(volume);
+                Method getMaxFileSize = volume.getClass().getMethod("getMaxFileSize");
+                long maxFileSize = (long) getMaxFileSize.invoke(volume);
                 Log.d(TAG, "testSDCard: *****************path=" + path);
                 Log.d(TAG, "testSDCard: description=" + description);
                 Log.d(TAG, "testSDCard: uuid=" + uuid);
+                Log.d(TAG, "testSDCard: string=" + string);
                 Log.d(TAG, "testSDCard: state=" + state);
                 Log.d(TAG, "testSDCard: emulated=" + emulated);
                 Log.d(TAG, "testSDCard: primary=" + primary);
                 Log.d(TAG, "testSDCard: removable=" + removable);
-                Log.d(TAG, "testSDCard: string=" + string);
+                Log.d(TAG, "testSDCard: maxFileSize=" + maxFileSize / 1024 / 1024);
             }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();

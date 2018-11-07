@@ -1,0 +1,4 @@
+#Mon Dec 24 17:30:37 CST 2018
+base.0=/home/yuan/Documents/AndroidStudioProjects/App16/myview/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex
