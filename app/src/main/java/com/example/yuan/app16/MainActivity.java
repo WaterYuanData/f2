@@ -21,6 +21,7 @@ import android.widget.Toast;
 import java.io.IOException;
 
 import com.example.yuan.app16.Theme.ThemeActivity;
+import com.example.yuan.app16.audioSource.AudioSourceActivity;
 import com.example.yuan.app16.example1.MyActivity;
 import com.example.yuan.app16.example2.Main2Activity;
 import com.example.yuan.app16.gestureDetector.MyGesture;
@@ -125,6 +126,11 @@ public class MainActivity extends Activity {
     @OnClick(R.id.bt19)
     public void listViewTest(View view){
         startActivity(new Intent(this, ListOnLongClickActivity.class));
+    }
+
+    @OnClick(R.id.audio)
+    public void testAudio(View view){
+        startActivity(new Intent(this, AudioSourceActivity.class));
     }
 
     @OnClick(R.id.btn_spiral)
