@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/myview" />
             <option value="$PROJECT_DIR$/sd" />
+            <option value="$PROJECT_DIR$/shellandroid" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -1,1 +1,1 @@
-include ':app', ':sd', ':myview'
+include ':app', ':sd', ':myview', ':shellandroid'

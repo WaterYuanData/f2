@@ -19,7 +19,7 @@ allprojects {
         google()
         // 联网引擎 com.example.yuan.app16.RetrofitUtils.Main20Activity
         // 第一步
-//        maven { url "https://jitpack.io" }
+        maven { url "https://jitpack.io" }
     }
 }
 
