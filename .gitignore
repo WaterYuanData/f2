@@ -8,6 +8,8 @@
 /captures
 .externalNativeBuild
 
+*/build/*
+
 # 来自CloudMindsCamera
 
 .DS_Store
