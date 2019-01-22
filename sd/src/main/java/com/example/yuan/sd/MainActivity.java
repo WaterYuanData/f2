@@ -1,10 +1,11 @@
 package com.example.yuan.sd;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.os.Environment;
-import android.os.StatFs;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
+// import android.os.SystemProperties;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -63,14 +64,76 @@ public class MainActivity extends AppCompatActivity {
                 String string = volume.toString();
                 Method getPath = volume.getClass().getMethod("getPath");
                 String path = (String) getPath.invoke(volume);
+                Method getMaxFileSize = volume.getClass().getMethod("getMaxFileSize");
+                long maxFileSize = (long) getMaxFileSize.invoke(volume);
                 Log.d(TAG, "testSDCard: *****************path=" + path);
                 Log.d(TAG, "testSDCard: description=" + description);
                 Log.d(TAG, "testSDCard: uuid=" + uuid);
+                Log.d(TAG, "testSDCard: string=" + string);
                 Log.d(TAG, "testSDCard: state=" + state);
                 Log.d(TAG, "testSDCard: emulated=" + emulated);
                 Log.d(TAG, "testSDCard: primary=" + primary);
                 Log.d(TAG, "testSDCard: removable=" + removable);
-                Log.d(TAG, "testSDCard: string=" + string);
+                Log.d(TAG, "testSDCard: maxFileSize=" + maxFileSize / 1024 / 1024);
+
+                // testSDCard: canRead=true
+                // testSDCard: canWrite=false
+                // testSDCard: freeSpace=12137955328
+                // testSDCard: directory=true
+                // testSDCard: setWritable=true
+                // testSDCard: canWrite=false
+
+                if (!path.contains("emulated")) {
+                    Log.e(TAG, "testSDCard: " );
+                    File file = new File(path + "/DCIM");// path1=/storage/B907-2A51/DCIM
+                    // /storage/B907-2A51/DCIM/Camera
+                    // SDCard directory  --mkdirs=true
+                    String path1 = file.getPath();
+                    boolean mkdir = file.mkdir();
+                    boolean mkdirs1 = file.mkdirs();
+                    Log.d(TAG, "testSDCard: mkdir=" + mkdir + " mkdirs1=" + mkdirs1);// mkdir=false mkdirs1=false
+                    boolean canRead = file.canRead();
+                    boolean canWrite = file.canWrite();
+                    long freeSpace = file.getFreeSpace();
+                    Log.d(TAG, "testSDCard: --------------path1=" + path1);
+                    Log.d(TAG, "testSDCard: canRead=" + canRead);
+                    Log.d(TAG, "testSDCard: canWrite=" + canWrite);
+                    Log.d(TAG, "testSDCard: freeSpace=" + freeSpace);
+                    boolean directory = file.isDirectory();
+                    boolean setWritable = file.setWritable(true);
+                    canWrite = file.canWrite();
+                    Log.d(TAG, "testSDCard: directory=" + directory);
+                    Log.d(TAG, "testSDCard: setWritable=" + setWritable);
+                    Log.d(TAG, "testSDCard: canWrite=" + canWrite);
+
+                    File file1 = new File(path + "/a.txt");
+                    // boolean newFile = file1.createNewFile();
+                    boolean canWrite1 = file1.canWrite();
+                    Log.d(TAG, "testSDCard: --------------getPath=" + file1.getPath());
+                    // Log.d(TAG, "testSDCard: newFile=" + newFile);
+                    Log.d(TAG, "testSDCard: canWrite1=" + canWrite1);
+
+                    Log.e(TAG, "testSDCard: " );
+                    File externalStorageDirectory = Environment.getExternalStorageDirectory();
+                    boolean exists = externalStorageDirectory.exists();
+                    boolean canWrite2 = externalStorageDirectory.canWrite();
+                    Log.d(TAG, "testSDCard: "+externalStorageDirectory.toString());
+                    Log.d(TAG, "testSDCard: "+exists);
+                    Log.d(TAG, "testSDCard: "+canWrite2);
+                    File externalStoragePublicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+                    boolean exists1 = externalStoragePublicDirectory.exists();
+                    boolean canWrite3 = externalStoragePublicDirectory.canWrite();
+                    Log.d(TAG, "testSDCard: "+externalStoragePublicDirectory.toString());
+                    Log.d(TAG, "testSDCard: "+exists1);
+                    Log.d(TAG, "testSDCard: "+canWrite3);
+
+
+                    boolean isAppDebuggable = (getApplication().getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+                    // boolean isApiWarningEnabled = SystemProperties.getInt("ro.art.hiddenapi.warning", 0) == 1;
+                    Log.e(TAG, "onShutterButtonClick: isAppDebuggable=" + isAppDebuggable);
+                    // Log.e(TAG, "onShutterButtonClick: isApiWarningEnabled=" + isApiWarningEnabled);
+
+                }
             }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();

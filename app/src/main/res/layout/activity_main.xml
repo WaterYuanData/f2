@@ -16,6 +16,13 @@
         tools:context="com.example.yuan.app16.example2.Main2Activity">
 
         <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/audio"
+            android:onClick="testAudio"
+            android:text="测audio广播"/>
+
+        <Button
             android:text="32 测黄金螺旋线"
             android:id="@+id/btn_spiral"
             android:onClick="testSpiral"

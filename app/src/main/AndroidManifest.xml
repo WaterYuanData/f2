@@ -158,6 +158,8 @@
         </activity>
         <activity android:name=".myView.SpiralActivity">
         </activity>
+        <activity android:name=".audioSource.AudioSourceActivity">
+        </activity>
     </application>
 
 </manifest>
