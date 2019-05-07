@@ -10,7 +10,7 @@
 
 */build/*
 
-# 来自CloudMindsCamera
+# 来自MindsCamera
 
 .DS_Store
 
@@ -64,4 +64,4 @@ android.ipr
 android.iml
 android.iws
 
-# CloudMindsCamera
+# MindsCamera
