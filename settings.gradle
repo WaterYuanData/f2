@@ -1,1 +1,1 @@
-include ':app', ':sd', ':myview', ':shellandroid', ':camera2api', ':testthread'
+include ':app', ':sd', ':myview', ':shellandroid', ':testthread'
