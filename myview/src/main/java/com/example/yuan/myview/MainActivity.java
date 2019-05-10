@@ -10,10 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,9 +48,19 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.lv);
         listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, stringArray));
 
+        // ScrollView中嵌套的ListView不可滑动的解决
+        final ScrollView scrollView = findViewById(R.id.scrollView);
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+
         RecyclerView recyclerView = findViewById(R.id.rv);
         recyclerView.setAdapter(new MyAdapter(stringList));
-        recyclerView.setLayoutManager(new ResolutionLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new MyLinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.addItemDecoration(new MyItemDecoration()); // 调整间距
 
         // 滑动冲突、滑动不流畅
@@ -68,17 +80,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerView2.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private class ResolutionLayoutManager extends LinearLayoutManager {
+    private class MyLinearLayoutManager extends LinearLayoutManager {
 
-        public ResolutionLayoutManager(Context context) {
+        public MyLinearLayoutManager(Context context) {
             super(context);
         }
 
-        public ResolutionLayoutManager(Context context, int orientation, boolean reverseLayout) {
+        public MyLinearLayoutManager(Context context, int orientation, boolean reverseLayout) {
             super(context, orientation, reverseLayout);
         }
 
-        public ResolutionLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        public MyLinearLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
             super(context, attrs, defStyleAttr, defStyleRes);
         }
 
@@ -116,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private List<String> mDatas;
+        private int index = 0;
 
         public MyAdapter(List<String> data) {
             this.mDatas = data;
@@ -124,13 +137,14 @@ public class MainActivity extends AppCompatActivity {
         @NonNull
         @Override
         public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            Log.i(TAG, "onCreateViewHolder: " + index++);
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view, parent, false);
             return new MyViewHolder(v);
         }
 
         @Override
         public void onBindViewHolder(@NonNull MyViewHolder vh, final int position) {
-            Log.d(TAG, "onBindViewHolder: position=" + position);
+            Log.i(TAG, "onBindViewHolder: position=" + position);
             vh.title.setText(mDatas.get(position));
             vh.title.setOnClickListener(new View.OnClickListener() {
                 @Override
