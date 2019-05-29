@@ -6,6 +6,7 @@ import android.util.Log;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+// 测试原子类
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -16,17 +17,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private static final String TAG = "MainActivity";
-    private static AtomicLong sAtomicLong = new AtomicLong(10000L);
+    private static AtomicLong sAtomicLong = new AtomicLong(0L);
 
     private void test() {
 
 //这里开了1000个线程对sCount并发操作
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 300; i++) {
             Log.e(TAG, "run: --" + i);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    sAtomicLong.decrementAndGet();
+                    sAtomicLong.addAndGet(1);
                     Log.i(TAG, "run: " + sAtomicLong.toString());
                 }
             }).start();
