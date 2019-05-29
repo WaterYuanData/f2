@@ -27,12 +27,15 @@ public class Main2Activity extends AppCompatActivity {
         Log.i(TAG, "onResume: ");
 
         MyThread myThread = new MyThread();
+        Log.i(TAG, "onResume: myThread=" + myThread.getName() + " getState=" + myThread.getState());
         myThread.start();
-//        try {
-//            myThread.join(6000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        Log.i(TAG, "onResume: myThread=" + myThread.getName() + " getState=" + myThread.getState());
+        try {
+            myThread.join(6000);
+            Log.i(TAG, "onResume: myThread=" + myThread.getName() + " getState=" + myThread.getState());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Log.i(TAG, "onResume: yyyy");
         /*
 2019-05-29 17:37:47.803 17204-17204/com.example.testthread I/Main2Activity: onResume:
@@ -56,7 +59,9 @@ class MyThread extends Thread{
         super.run();
         Log.i(TAG, "run: sleep 开始");
         try {
+            Log.i(TAG, "run: getState=" + Thread.currentThread().getState());
             Thread.sleep(15000);
+            Log.i(TAG, "run: getState=" + Thread.currentThread().getState());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
