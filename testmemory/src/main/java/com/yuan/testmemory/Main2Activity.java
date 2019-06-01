@@ -3,10 +3,12 @@ package com.yuan.testmemory;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 public class Main2Activity extends AppCompatActivity {
+    private static final String TAG = "Main2Activity";
 
-    static Context context;
+    static Context text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +16,13 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         new MyMemory().forMemory();
-        
-        context = this;
+
+        text = this;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy: ");
     }
 }
